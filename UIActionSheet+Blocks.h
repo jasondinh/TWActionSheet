@@ -17,6 +17,6 @@ typedef void (^CancelBlock) (UIActionSheet *actionSheet);
 typedef void (^ClickBlock) (UIActionSheet *actionSheet, NSUInteger idx);
 typedef void (^WillDismissBlock) (UIActionSheet *actionSheet, NSUInteger idx);
 typedef void (^DidDismissBlock) (UIActionSheet *actionSheet, NSUInteger idx);
-@interface UIActionSheet (PicaBlock) <UIActionSheetDelegate>
+@interface UIActionSheet (Blocks) <UIActionSheetDelegate>
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle onClick: (ClickBlock) clickBlock onCancel: (CancelBlock) cancelBlock onWillDismiss: (WillDismissBlock) willDismissBlock onDidDismiss: (DidDismissBlock) didDismissBlock otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 @end

@@ -10,7 +10,7 @@ static CancelBlock _cancelBlock;
 static ClickBlock _clickBlock;
 static WillDismissBlock _willDismissBlock;
 static DidDismissBlock _didDismissBlock;
-@implementation UIActionSheet (PicaBlock)
+@implementation UIActionSheet (Blocks)
 
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle onClick: (ClickBlock) clickBlock onCancel: (CancelBlock) cancelBlock onWillDismiss: (WillDismissBlock) willDismissBlock onDidDismiss: (DidDismissBlock) didDismissBlock otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self = [self initWithTitle: title delegate: nil cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles: nil];
