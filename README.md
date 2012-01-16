@@ -9,14 +9,7 @@ Block addition for UIActionSheet
 ```
 
 ```objective-c
-- (id)initWithTitle:(NSString *)title 
-cancelButtonTitle:(NSString *)cancelButtonTitle 
-destructiveButtonTitle:(NSString *)destructiveButtonTitle 
-onClick: (ClickBlock) clickBlock 
-onCancel: (CancelBlock) cancelBlock 
-onWillDismiss: (WillDismissBlock) willDismissBlock 
-onDidDismiss: (DidDismissBlock) didDismissBlock 
-otherButtonTitles:(NSString *)otherButtonTitles, ...
+- (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle onClick: (ClickBlock) clickBlock onCancel: (CancelBlock) cancelBlock onWillDismiss: (WillDismissBlock) willDismissBlock onDidDismiss: (DidDismissBlock) didDismissBlock otherButtonTitles:(NSString *)otherButtonTitles, ...;
 ```
 
 ## License
