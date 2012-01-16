@@ -12,6 +12,49 @@ static WillDismissBlock _willDismissBlock;
 static DidDismissBlock _didDismissBlock;
 @implementation UIActionSheet (Blocks)
 
+- (void) setOnCancelHandler: (CancelBlock) cancelBlock {
+    ARC_RELEASE(_cancelBlock);
+    _cancelBlock = [cancelBlock copy];
+}
+- (void) setOnClickHandler: (ClickBlock) clickBlock {
+    ARC_RELEASE(_clickBlock);
+    _clickBlock = [clickBlock copy];
+}
+- (void) setBeforeDismissHandler: (WillDismissBlock) willDismissBlock {
+    ARC_RELEASE(_willDismissBlock);
+    _willDismissBlock = [willDismissBlock copy];
+    
+}
+- (void) setAfterDismissHandler: (DidDismissBlock) didDismissBlock {
+    ARC_RELEASE(_didDismissBlock);
+    _didDismissBlock = [didDismissBlock copy];
+}
+
+- (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
+    self = [self initWithTitle: title delegate: nil cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles: nil];
+    [self setDelegate: self];
+    if (self) {
+        va_list argumentList;
+        if (otherButtonTitles) {
+            NSMutableArray *buttons = [NSMutableArray array];
+            [buttons addObject: otherButtonTitles];
+            
+            va_start(argumentList, otherButtonTitles);
+            NSString *eachItem;
+            while((eachItem = va_arg(argumentList, NSString *))) {
+                [buttons addObject: eachItem];
+            }
+            va_end(argumentList);
+            [buttons enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                [self addButtonWithTitle: obj];
+            }];
+            
+        }
+    }
+    ARC_RETAIN(self);
+    return self;
+}
+
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle onClick: (ClickBlock) clickBlock onCancel: (CancelBlock) cancelBlock onWillDismiss: (WillDismissBlock) willDismissBlock onDidDismiss: (DidDismissBlock) didDismissBlock otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self = [self initWithTitle: title delegate: nil cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles: nil];
     [self setDelegate: self];
