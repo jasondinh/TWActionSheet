@@ -15,7 +15,7 @@ Block addition for UIActionSheet
 ```objective-c
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
 
-//to invoke delegate method
+//to invoke delegate method - have to be called before the actionsheet is showed
 - (void) setOnCancelHandler: (CancelBlock) cancelBlock;
 - (void) setOnClickHandler: (ClickBlock) clickBlock;
 - (void) setBeforeDismissHandler: (WillDismissBlock) willDismissBlock;
