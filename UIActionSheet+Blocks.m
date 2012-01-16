@@ -46,7 +46,7 @@ static DidDismissBlock _didDismissBlock;
         }
     }
     
-    [self retain];
+    ARC_RETAIN(self);
     return self;
 }
 
@@ -54,16 +54,14 @@ static DidDismissBlock _didDismissBlock;
     if (_cancelBlock) {
         _cancelBlock(actionSheet);
     }
-    [_cancelBlock release];
-    [self release];
+    ARC_RELEASE(_cancelBlock);
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (_clickBlock) {
         _clickBlock(actionSheet, buttonIndex);
     }
-    [_clickBlock release];
-    [self release];
+    ARC_RELEASE(_clickBlock);
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
@@ -71,17 +69,15 @@ static DidDismissBlock _didDismissBlock;
     if (_didDismissBlock) {
         _didDismissBlock(actionSheet, buttonIndex);
     }
-    [_didDismissBlock release];
-    [self release];
-    
+    ARC_RELEASE(_didDismissBlock);
+    ARC_RELEASE(self);
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet willDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (_willDismissBlock) {
         _willDismissBlock(actionSheet, buttonIndex);
     }
-    [_willDismissBlock release];
-    [self release];
+    ARC_RELEASE(_willDismissBlock);
 }
 
 @end

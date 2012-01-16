@@ -4,6 +4,13 @@
 //  Created by Jason Dinh on 16/1/12.
 //  Copyright (c) 2012 bathanh@gmail.com. All rights reserved.
 //
+#if __has_feature(objc_arc)
+#define ARC_RELEASE(obj) 
+#define ARC_RETAIN(obj) 
+#else
+#define ARC_RELEASE(obj) [obj release]
+#define ARC_RETAIN(obj) [obj retain]
+#endif
 
 #import <Foundation/Foundation.h>
 typedef void (^CancelBlock) (UIActionSheet *actionSheet);
