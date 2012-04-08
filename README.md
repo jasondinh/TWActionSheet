@@ -1,11 +1,11 @@
-#UIActionSheet+Blocks
+#TWActionSheet
 
-Block addition for UIActionSheet
+Block addition for TWActionSheet
 
 ##Usage
 
 ```objective-c
-#import "UIActionSheet+Blocks.h"
+#import "TWActionSheet.h"
 ```
 
 ```objective-c

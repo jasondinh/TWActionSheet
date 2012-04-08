@@ -5,35 +5,55 @@
 //  Copyright (c) 2012 bathanh@gmail.com. All rights reserved.
 //
 
-#import "UIActionSheet+Blocks.h"
-static CancelBlock _cancelBlock;
-static ClickBlock _clickBlock;
-static WillDismissBlock _willDismissBlock;
-static DidDismissBlock _didDismissBlock;
-@implementation UIActionSheet (Blocks)
+#import "TWActionSheet.h"
+@implementation TWActionSheet: UIActionSheet
 
-- (void) setOnCancelHandler: (CancelBlock) cancelBlock {
+- (void) dealloc {
+ARC_RELEASE(_cancelBlock);
+ARC_RELEASE(_clickBlock);
+ARC_RELEASE(_willDismissBlock);
+ARC_RELEASE(_didDismissBlock);
+[super dealloc];
+}
+
+- (CancelBlock) cancelBlock {
+    return _cancelBlock;
+}
+
+- (ClickBlock) clickBlock {
+    return _clickBlock;
+}
+
+- (WillDismissBlock) willDismissBlock {
+    return _willDismissBlock;
+}
+
+- (DidDismissBlock) didDismissBlock {
+    return _didDismissBlock;
+}
+
+- (void) setCancelBlock: (CancelBlock) cancelBlock {
     ARC_RELEASE(_cancelBlock);
     _cancelBlock = [cancelBlock copy];
 }
-- (void) setOnClickHandler: (ClickBlock) clickBlock {
+- (void) setClickBlock: (ClickBlock) clickBlock {
     ARC_RELEASE(_clickBlock);
     _clickBlock = [clickBlock copy];
 }
-- (void) setBeforeDismissHandler: (WillDismissBlock) willDismissBlock {
+- (void) setWillDismissBlock: (WillDismissBlock) willDismissBlock {
     ARC_RELEASE(_willDismissBlock);
     _willDismissBlock = [willDismissBlock copy];
     
 }
-- (void) setAfterDismissHandler: (DidDismissBlock) didDismissBlock {
+- (void) setDidDismissBlock: (DidDismissBlock) didDismissBlock {
     ARC_RELEASE(_didDismissBlock);
     _didDismissBlock = [didDismissBlock copy];
 }
 
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self = [self initWithTitle: title delegate: nil cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles: nil];
-    [self setDelegate: self];
     if (self) {
+        [self setDelegate: self];
         va_list argumentList;
         if (otherButtonTitles) {
             NSMutableArray *buttons = [NSMutableArray array];
@@ -57,8 +77,8 @@ static DidDismissBlock _didDismissBlock;
 
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle onClick: (ClickBlock) clickBlock onCancel: (CancelBlock) cancelBlock onWillDismiss: (WillDismissBlock) willDismissBlock onDidDismiss: (DidDismissBlock) didDismissBlock otherButtonTitles:(NSString *)otherButtonTitles, ... {
     self = [self initWithTitle: title delegate: nil cancelButtonTitle:cancelButtonTitle destructiveButtonTitle:destructiveButtonTitle otherButtonTitles: nil];
-    [self setDelegate: self];
     if (self) {
+        [self setDelegate: self];
         va_list argumentList;        
         if (otherButtonTitles) {
             NSMutableArray *buttons = [NSMutableArray array];
@@ -98,6 +118,7 @@ static DidDismissBlock _didDismissBlock;
         _cancelBlock(actionSheet);
     }
     ARC_RELEASE(_cancelBlock);
+    ARC_RELEASE(self);
 }
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
