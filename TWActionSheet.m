@@ -9,11 +9,11 @@
 @implementation TWActionSheet: UIActionSheet
 
 - (void) dealloc {
-ARC_RELEASE(_cancelBlock);
-ARC_RELEASE(_clickBlock);
-ARC_RELEASE(_willDismissBlock);
-ARC_RELEASE(_didDismissBlock);
-[super dealloc];
+    ARC_RELEASE(_cancelBlock);
+    ARC_RELEASE(_clickBlock);
+    ARC_RELEASE(_willDismissBlock);
+    ARC_RELEASE(_didDismissBlock);
+    [super dealloc];
 }
 
 - (void) setCancelBlock: (CancelBlock) cancelBlock {
@@ -127,5 +127,4 @@ ARC_RELEASE(_didDismissBlock);
     }
     ARC_RELEASE(_willDismissBlock);
 }
-
 @end

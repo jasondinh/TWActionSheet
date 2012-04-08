@@ -24,4 +24,4 @@ UIActionSheet with block addition
 
 ## License
 
-Copyright (c) 2012 Jason Dinh Ba Thanh. This code is licensed under the [MIT License](http://github.com/xuki/UIActionSheet-Blocks/raw/master/LICENSE).
+Copyright (c) 2012 Jason Dinh Ba Thanh. This code is licensed under the [MIT License](http://github.com/xuki/UIActionSheet-Blocks/raw/master/LICENSE)
