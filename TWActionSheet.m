@@ -16,22 +16,6 @@ ARC_RELEASE(_didDismissBlock);
 [super dealloc];
 }
 
-- (CancelBlock) cancelBlock {
-    return _cancelBlock;
-}
-
-- (ClickBlock) clickBlock {
-    return _clickBlock;
-}
-
-- (WillDismissBlock) willDismissBlock {
-    return _willDismissBlock;
-}
-
-- (DidDismissBlock) didDismissBlock {
-    return _didDismissBlock;
-}
-
 - (void) setCancelBlock: (CancelBlock) cancelBlock {
     ARC_RELEASE(_cancelBlock);
     _cancelBlock = [cancelBlock copy];

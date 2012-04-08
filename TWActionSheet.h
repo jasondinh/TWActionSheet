@@ -26,10 +26,10 @@ typedef void (^DidDismissBlock) (UIActionSheet *actionSheet, NSUInteger idx);
     DidDismissBlock _didDismissBlock;
 }
 
-@property (getter = cancelBlock, setter = setCancelBlock:) CancelBlock cancelBlock;
-@property (getter = clickBlock, setter = setClickBlock:) ClickBlock clickBlock;
-@property (getter = willDismissBlock, setter = setWillDismissBlock:) WillDismissBlock willDismissBlock;
-@property (getter = didDismissBlock, setter = setDidDismissBlock:) DidDismissBlock didDismissBlock;
+@property (setter = setCancelBlock:) CancelBlock cancelBlock;
+@property (setter = setClickBlock:) ClickBlock clickBlock;
+@property (setter = setWillDismissBlock:) WillDismissBlock willDismissBlock;
+@property (setter = setDidDismissBlock:) DidDismissBlock didDismissBlock;
 
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle onClick: (ClickBlock) clickBlock onCancel: (CancelBlock) cancelBlock onWillDismiss: (WillDismissBlock) willDismissBlock onDidDismiss: (DidDismissBlock) didDismissBlock otherButtonTitles:(NSString *)otherButtonTitles, ... NS_REQUIRES_NIL_TERMINATION;
 

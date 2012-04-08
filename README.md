@@ -1,6 +1,6 @@
 #TWActionSheet
 
-Block addition for TWActionSheet
+UIActionSheet with block addition
 
 ##Usage
 
@@ -16,10 +16,10 @@ Block addition for TWActionSheet
 - (id)initWithTitle:(NSString *)title cancelButtonTitle:(NSString *)cancelButtonTitle destructiveButtonTitle:(NSString *)destructiveButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ...;
 
 //to invoke delegate method - have to be called before the actionsheet is showed
-- (void) setOnCancelHandler: (CancelBlock) cancelBlock;
-- (void) setOnClickHandler: (ClickBlock) clickBlock;
-- (void) setBeforeDismissHandler: (WillDismissBlock) willDismissBlock;
-- (void) setAfterDismissHandler: (DidDismissBlock) didDismissBlock;
+- (void) setCancelBlock: (CancelBlock) cancelBlock;
+- (void) setClickBlock: (ClickBlock) clickBlock;
+- (void) setWillDismissBlock: (WillDismissBlock);
+- (void) setDidDismissBlock: (DidDismissBlock);
 ```
 
 ## License
