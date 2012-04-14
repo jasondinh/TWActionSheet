@@ -7,10 +7,12 @@
 
 #if __has_feature(objc_arc)
 #define ARC_RELEASE(obj) 
-#define ARC_RETAIN(obj) 
+#define ARC_RETAIN(obj)
+#define ARC_DEALLOC(obj)
 #else
 #define ARC_RELEASE(obj) [obj release]
 #define ARC_RETAIN(obj) [obj retain]
+#define ARC_DEALLOC(obj) [obj dealloc]
 #endif
 
 #import <Foundation/Foundation.h>
